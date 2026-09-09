@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>RENDANGTOTO</title>
+
+    <link rel="stylesheet" href="style.css">
+
+<style>
+/* ===== FITUR TAMBAHAN ===== */
+.promo-page{display:none;padding:18px 0 90px}.promo-title{display:flex;align-items:center;gap:10px;margin-bottom:14px;border-bottom:1px solid rgba(255,215,0,.25);padding-bottom:10px}.promo-title>span{font-size:28px;color:#ffe000;animation:promoStar 1.8s ease-in-out infinite}.promo-title small{display:block;color:#9d8700;font-size:8px;letter-spacing:3px}.promo-title h2{margin:3px 0;color:#ffe000;font-size:20px}.promo-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.promo-card{overflow:hidden;border:1px solid #665600;border-radius:8px;background:linear-gradient(145deg,#171717,#050505);transition:.3s;box-shadow:0 4px 14px rgba(0,0,0,.45)}.promo-card:hover{transform:translateY(-5px);border-color:#ffe000;box-shadow:0 0 22px rgba(255,215,0,.22)}.promo-card-image{position:relative;height:145px;overflow:hidden}.promo-card-image img{width:100%;height:100%;object-fit:cover;display:block;transition:.5s}.promo-card:hover .promo-card-image img{transform:scale(1.07)}.promo-card-image span{position:absolute;top:7px;left:7px;padding:4px 7px;border-radius:4px;background:#ffe000;color:#111;font-size:8px;font-weight:900}.promo-card-content{padding:11px}.promo-card-content h3{margin:0;color:#ffe000;font-size:12px}.promo-card-content p{margin:7px 0;color:#aaa;font-size:10px;line-height:1.5}.promo-card-content button{padding:7px 11px;border:1px solid #ffe000;border-radius:4px;background:transparent;color:#ffe000;font-size:9px;font-weight:800;cursor:pointer;transition:.25s}.promo-card-content button:hover{background:#ffe000;color:#111;box-shadow:0 0 12px rgba(255,215,0,.45)}
+.mobile-menu{position:fixed;top:0;right:0;width:290px;max-width:88vw;height:100vh;z-index:10000;background:linear-gradient(160deg,#191919,#050505);border-left:1px solid #ffe000;box-shadow:-12px 0 40px rgba(0,0,0,.75);transform:translateX(100%);transition:transform .35s ease}.mobile-menu.open{transform:translateX(0)}.mobile-menu-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:9999;opacity:0;visibility:hidden;transition:.3s}.mobile-menu-backdrop.open{opacity:1;visibility:visible}.mobile-menu-header{display:flex;align-items:center;justify-content:space-between;padding:17px;border-bottom:1px solid rgba(255,215,0,.3);color:#ffe000}.mobile-menu-header button{width:32px;height:32px;border:1px solid #ffe000;border-radius:50%;background:#111;color:#fff;font-size:20px;cursor:pointer}.mobile-menu-content{padding:14px}.mobile-menu-content button{display:block;width:100%;margin-bottom:8px;padding:13px;border:1px solid #4d4200;border-radius:6px;background:#101010;color:#eee;text-align:left;font-size:11px;font-weight:700;cursor:pointer;transition:.25s}.mobile-menu-content button:hover{padding-left:19px;color:#ffe000;border-color:#ffe000;background:#181818}
+@keyframes promoStar{0%,100%{transform:rotate(0) scale(1)}50%{transform:rotate(15deg) scale(1.15)}}
+@media(max-width:700px){.promo-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.promo-card-image{height:105px}.promo-card-content{padding:8px}.promo-card-content h3{font-size:10px}.promo-card-content p{font-size:9px}.mobile-menu{display:block}}
+</style>
+
+</head>
+
+<body>
+
+    <!-- GAME DEMO POPUP -->
+<div class="game-demo-popup" id="gameDemoPopup">
+    <div class="game-demo-overlay" onclick="closeGameDemo()"></div>
+
+    <div class="game-demo-modal">
+        <button class="game-demo-close" onclick="closeGameDemo()">×</button>
+
+        <div class="game-demo-image">
+            <img src="KEREN.png" alt="Game Demo">
+        </div>
+
+        <div class="game-demo-content">
+            <span>GAME DEMO</span>
+            <h2 id="gameDemoTitle">GAME 01</h2>
+            <p>Halaman demo game berhasil dibuka.</p>
+
+            <button onclick="closeGameDemo()">
+                KEMBALI
+            </button>
+        </div>
+    </div>
+</div>
+
+    <!-- ================= POPUP PROMO ================= -->
+
+<div class="promo-popup" id="promoPopup">
+
+    <div class="promo-overlay"></div>
+
+    <div class="promo-modal">
+
+        <button
+            class="promo-close"
+            onclick="closePromo()"
+        >
+            ×
+        </button>
+
+        <div class="promo-glow"></div>
+
+        <img
+            src="KEREN.png"
+            alt="Promo"
+        >
+
+        <div class="promo-content">
+
+            <h2>PROMO SPESIAL</h2>
+
+            <p>
+                Jangan lewatkan informasi terbaru kami.
+            </p>
+
+            <button onclick="closePromo()">
+                LIHAT SEKARANG
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+    <!-- ==================================================
+         WEBSITE UTAMA
+    ================================================== -->
+
+    <div class="site-wrapper">
+
+
+        <!-- ================= HEADER ================= -->
+
+        <header class="topbar">
+
+            <div class="logo">
+                <span>✦</span> RENDANG<span>TOTO</span>
+            </div>
+
+
+            <nav class="main-nav">
+
+                <a href="javascript:void(0)" onclick="showGamePage()">HOME</a>
+                <a href="javascript:void(0)" onclick="openPromoPage()">PROMO</a>
+                <a href="javascript:void(0)" onclick="showMessage('Hubungi Kami')">HUBUNGI KAMI</a>
+                <a href="javascript:void(0)" onclick="toggleMobileMenu()">MENU</a>
+
+            </nav>
+
+
+            <div class="login-area">
+
+                <input
+                    type="text"
+                    placeholder="Username"
+                >
+
+                <input
+                    type="password"
+                    placeholder="Password"
+                >
+
+                <button>LOGIN</button>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= INFO ================= -->
+
+        <div class="info-bar">
+
+            <span>📢 INFO TERKINI</span>
+
+            <div class="ticker">
+    <div class="ticker-text">
+        📢 SELAMAT DATANG DI RENDANGTOTO &nbsp;&nbsp;&nbsp; ✦ &nbsp;&nbsp;&nbsp;
+        SLOT GACOR DENGAN RATE KEMENANGAN 100%
+    </div>
+</div>
+
+</div>
+
+        
+
+
+        <!-- ================= BANNER ================= -->
+
+        <section class="hero-carousel">
+
+            <div class="slides">
+
+                <!-- BANNER 1 -->
+                <div class="slide active">
+
+                    <img
+                        src="RDG.webp"
+                        alt="Banner 1"
+                    >
+
+                </div>
+
+
+                <!-- BANNER 2 -->
+                <div class="slide">
+
+                    <img
+                        src="RDG2.jpg"
+                        alt="Banner 2"
+                    >
+
+                </div>
+
+
+                <!-- BANNER 3 -->
+                <div class="slide">
+
+                    <img
+                        src="RDG3.jpg"
+                        alt="Banner 3"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- PANAH -->
+
+            <button
+                class="carousel-prev"
+                onclick="prevSlide()"
+            >
+                ❮
+            </button>
+
+
+            <button
+                class="carousel-next"
+                onclick="nextSlide()"
+            >
+                ❯
+            </button>
+
+
+            <!-- DOT -->
+
+            <div class="carousel-dots">
+
+                <span
+                    class="dot active"
+                    onclick="showSlide(0)"
+                ></span>
+
+                <span
+                    class="dot"
+                    onclick="showSlide(1)"
+                ></span>
+
+                <span
+                    class="dot"
+                    onclick="showSlide(2)"
+                ></span>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= HALAMAN PROMO ================= -->
+        <section class="promo-page" id="promoPage">
+
+            <div class="promo-title">
+                <span>✦</span>
+                <div>
+                    <small>PROMOTION</small>
+                    <h2>PROMO TERBARU</h2>
+                </div>
+            </div>
+
+            <div class="promo-grid">
+
+                <div class="promo-card">
+                    <div class="promo-card-image">
+                        <img src="KEREN.png" alt="Promo 1">
+                        <span>HOT</span>
+                    </div>
+                    <div class="promo-card-content">
+                        <h3>PROMO SPESIAL</h3>
+                        <p>Informasi promo terbaru dan pengumuman.</p>
+                        <button onclick="showPromoDetail('Promo Spesial')">LIHAT DETAIL</button>
+                    </div>
+                </div>
+
+                <div class="promo-card">
+                    <div class="promo-card-image">
+                        <img src="KEREN.png" alt="Promo 2">
+                        <span>NEW</span>
+                    </div>
+                    <div class="promo-card-content">
+                        <h3>EVENT TERBARU</h3>
+                        <p>Temukan informasi event dan update terbaru.</p>
+                        <button onclick="showPromoDetail('Event Terbaru')">LIHAT DETAIL</button>
+                    </div>
+                </div>
+
+                <div class="promo-card">
+                    <div class="promo-card-image">
+                        <img src="KEREN.png" alt="Promo 3">
+                        <span>INFO</span>
+                    </div>
+                    <div class="promo-card-content">
+                        <h3>INFO TERBARU</h3>
+                        <p>Informasi terbaru yang bisa kamu lihat.</p>
+                        <button onclick="showPromoDetail('Info Terbaru')">LIHAT DETAIL</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ================= KONTEN ================= -->
+
+        <div class="content-layout">
+
+
+            <!-- ================= MENU KIRI ================= -->
+
+            <div class="game-sidebar">
+
+    <div class="side-title">
+        MENU GAME
+    </div>
+
+    <button class="game-menu active" onclick="filterGames('popular', this)">
+        <span>🔥</span>
+        TERPOPULER
+    </button>
+
+    <button class="game-menu" onclick="filterGames('all', this)">
+        <span>🎮</span>
+        SEMUA GAME
+    </button>
+
+    <button class="game-menu" onclick="filterGames('favorite', this)">
+        <span>⭐</span>
+        FAVORIT
+    </button>
+
+    <button class="game-menu" onclick="filterGames('event', this)">
+        <span>🏆</span>
+        EVENT
+    </button>
+
+    <button class="game-menu" onclick="filterGames('new', this)">
+        <span>✨</span>
+        TERBARU
+    </button>
+
+</div>
+
+
+            <!-- ================= GAME ================= -->
+<!-- ================= GRID GAME ================= -->
+
+<div class="game-grid">
+
+    <!-- GAME 01 -->
+    <div class="game-card" data-category="popular">
+
+        <div class="game-image">
+
+            <img src="KEREN.png" alt="Game 1">
+
+            <div class="light-effect"></div>
+
+            <div class="game-overlay">
+                <button onclick="openGameDemo(this)">LIHAT GAME</button>
+            </div>
+
+            <span class="game-badge">
+                POPULAR
+            </span>
+
+        </div>
+
+        <div class="game-info">
+            <h3>GAME 01</h3>
+            <span>Gaming</span>
+        </div>
+
+    </div>
+
+
+    <!-- GAME 02 -->
+    <div class="game-card" data-category="popular">
+
+        <div class="game-image">
+
+            <img src="KEREN.png" alt="Game 2">
+
+            <div class="light-effect"></div>
+
+            <div class="game-overlay">
+                <button onclick="openGameDemo(this)">LIHAT GAME</button>
+            </div>
+
+            <span class="game-badge">
+                POPULAR
+            </span>
+
+        </div>
+
+        <div class="game-info">
+            <h3>GAME 02</h3>
+            <span>Gaming</span>
+        </div>
+
+    </div>
+
+
+    <!-- GAME 03 -->
+    <div class="game-card" data-category="popular">
+
+        <div class="game-image">
+
+            <img src="KEREN.png" alt="Game 3">
+
+            <div class="light-effect"></div>
+
+            <div class="game-overlay">
+                <button onclick="openGameDemo(this)">LIHAT GAME</button>
+            </div>
+
+            <span class="game-badge">
+                POPULAR
+            </span>
+
+        </div>
+
+        <div class="game-info">
+            <h3>GAME 03</h3>
+            <span>Gaming</span>
+        </div>
+
+    </div>
+
+
+    <!-- GAME 04 -->
+    <div class="game-card" data-category="popular">
+
+        <div class="game-image">
+
+            <img src="KEREN.png" alt="Game 4">
+
+            <div class="light-effect"></div>
+
+            <div class="game-overlay">
+                <button onclick="openGameDemo(this)">LIHAT GAME</button>
+            </div>
+
+            <span class="game-badge">
+                POPULAR
+            </span>
+
+        </div>
+
+        <div class="game-info">
+            <h3>GAME 04</h3>
+            <span>Gaming</span>
+        </div>
+
+    </div>
+
+
+    <!-- GAME 05 -->
+    <div class="game-card" data-category="favorite">
+
+        <div class="game-image">
+
+            <img src="KEREN.png" alt="Game 5">
+
+            <div class="light-effect"></div>
+
+            <div class="game-overlay">
+                <button onclick="openGameDemo(this)">LIHAT GAME</button>
+            </div>
+
+            <span class="game-badge">
+                FAVORIT
+            </span>
+
+        </div>
+
+        <div class="game-info">
+            <h3>GAME 05</h3>
+            <span>Gaming</span>
+        </div>
+
+    </div>
+
+
+    <!-- GAME 06 -->
+    <div class="game-card" data-category="favorite">
+
+        <div class="game-image">
+
+            <img src="KEREN.png" alt="Game 6">
+
+            <div class="light-effect"></div>
+
+            <div class="game-overlay">
+                <button onclick="openGameDemo(this)">LIHAT GAME</button>
+            </div>
+
+            <span class="game-badge">
+                FAVORIT
+            </span>
+
+        </div>
+
+        <div class="game-info">
+            <h3>GAME 06</h3>
+            <span>Gaming</span>
+        </div>
+
+    </div>
+
+
+    <!-- GAME 07 -->
+    <div class="game-card" data-category="event">
+
+        <div class="game-image">
+
+            <img src="KEREN.png" alt="Game 7">
+
+            <div class="light-effect"></div>
+
+            <div class="game-overlay">
+                <button onclick="openGameDemo(this)">LIHAT GAME</button>
+            </div>
+
+            <span class="game-badge">
+                EVENT
+            </span>
+
+        </div>
+
+        <div class="game-info">
+            <h3>GAME 07</h3>
+            <span>Gaming</span>
+        </div>
+
+    </div>
+
+
+    <!-- GAME 08 -->
+    <div class="game-card" data-category="event">
+
+        <div class="game-image">
+
+            <img src="KEREN.png" alt="Game 8">
+
+            <div class="light-effect"></div>
+
+            <div class="game-overlay">
+                <button onclick="openGameDemo(this)">LIHAT GAME</button>
+            </div>
+
+            <span class="game-badge">
+                EVENT
+            </span>
+
+        </div>
+
+        <div class="game-info">
+            <h3>GAME 08</h3>
+            <span>Gaming</span>
+        </div>
+
+    </div>
+
+
+    <!-- GAME 09 -->
+    <div class="game-card" data-category="new">
+
+        <div class="game-image">
+
+            <img src="KEREN.png" alt="Game 9">
+
+            <div class="light-effect"></div>
+
+            <div class="game-overlay">
+                <button onclick="openGameDemo(this)">LIHAT GAME</button>
+            </div>
+
+            <span class="game-badge">
+                TERBARU
+            </span>
+
+        </div>
+
+        <div class="game-info">
+            <h3>GAME 09</h3>
+            <span>Gaming</span>
+        </div>
+
+    </div>
+
+
+    <!-- GAME 10 -->
+    <div class="game-card" data-category="new">
+
+        <div class="game-image">
+
+            <img src="KEREN.png" alt="Game 10">
+
+            <div class="light-effect"></div>
+
+            <div class="game-overlay">
+                <button onclick="openGameDemo(this)">LIHAT GAME</button>
+            </div>
+
+            <span class="game-badge">
+                TERBARU
+            </span>
+
+        </div>
+
+        <div class="game-info">
+            <h3>GAME 10</h3>
+            <span>Gaming</span>
+        </div>
+
+    </div>
+
+
+    <!-- GAME 11 -->
+    <div class="game-card" data-category="popular">
+
+        <div class="game-image">
+
+            <img src="KEREN.png" alt="Game 11">
+
+            <div class="light-effect"></div>
+
+            <div class="game-overlay">
+                <button onclick="openGameDemo(this)">LIHAT GAME</button>
+            </div>
+
+            <span class="game-badge">
+                POPULAR
+            </span>
+
+        </div>
+
+        <div class="game-info">
+            <h3>GAME 11</h3>
+            <span>Gaming</span>
+        </div>
+
+    </div>
+
+
+    <!-- GAME 12 -->
+    <div class="game-card" data-category="new">
+
+        <div class="game-image">
+
+            <img src="KEREN.png" alt="Game 12">
+
+            <div class="light-effect"></div>
+
+            <div class="game-overlay">
+               <button onclick="openGameDemo(this)">LIHAT GAME</button>
+            </div>
+
+            <span class="game-badge">
+                TERBARU
+            </span>
+
+        </div>
+
+        <div class="game-info">
+            <h3>GAME 12</h3>
+            <span>Gaming</span>
+        </div>
+
+    </div>
+
+</div>
+
+
+        <!-- ================= CHAT ================= -->
+
+        <div
+            class="chat-box"
+            id="chatBox"
+        >
+
+            <div class="chat-header">
+
+                <div>
+
+                    <b>🎮 RENDANGTOTO</b>
+
+                    <small>
+                        Online sekarang
+                    </small>
+
+                </div>
+
+
+                <button onclick="closeChat()">
+                    ×
+                </button>
+
+            </div>
+
+
+            <div class="chat-content">
+
+                <div class="bot-message">
+
+                    👋 Halo!
+
+                    <br>
+
+                    Ada yang bisa kami bantu?
+
+                </div>
+
+
+                <div class="bot-message">
+
+                    Silakan pilih menu di bawah.
+
+                </div>
+
+            </div>
+
+
+            <div class="chat-options">
+
+                <button onclick="sendMessage('Game terbaru')">
+                    🎮 Game Terbaru
+                </button>
+
+                <button onclick="sendMessage('Bantuan')">
+                    💬 Bantuan
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- FLOATING CHAT -->
+
+        <div class="floating">
+
+            <button onclick="openChat()">
+                💬
+            </button>
+
+        </div>
+
+        <!-- ================= BOTTOM NAV ================= -->
+
+<nav class="bottom-nav">
+
+    <button
+        class="bottom-item active"
+        onclick="goHome()"
+    >
+        <span>⌂</span>
+        <small>Home</small>
+    </button>
+
+
+    <button
+        class="bottom-item"
+        onclick="showMessage('Deposit')"
+    >
+        <span>●</span>
+        <small>Deposit</small>
+    </button>
+
+
+    <button
+        class="bottom-item center-item"
+        onclick="openPromoPage()"
+    >
+        <span>✦</span>
+        <small>Promo</small>
+    </button>
+
+
+    <button
+        class="bottom-item"
+        onclick="showMessage('Withdraw')"
+    >
+        <span>▰</span>
+        <small>Withdraw</small>
+    </button>
+
+
+    <button
+        class="bottom-item"
+        onclick="toggleMobileMenu()"
+    >
+        <span>☰</span>
+        <small>Menu</small>
+    </button>
+
+</nav>
+
+
+        <!-- ================= MOBILE MENU ================= -->
+
+        <div class="mobile-menu-backdrop" id="mobileMenuBackdrop" onclick="toggleMobileMenu()"></div>
+
+        <aside class="mobile-menu" id="mobileMenu">
+            <div class="mobile-menu-header">
+                <b>✦ RENDANGTOTO</b>
+                <button onclick="toggleMobileMenu()">×</button>
+            </div>
+            <div class="mobile-menu-content">
+                <button onclick="showGamePage(); toggleMobileMenu();">🏠 HOME</button>
+                <button onclick="openPromoPage(); toggleMobileMenu();">🔥 PROMO</button>
+                <button onclick="showMessage('Hubungi Kami'); toggleMobileMenu();">💬 HUBUNGI KAMI</button>
+                <button onclick="showMessage('Panduan'); toggleMobileMenu();">📖 PANDUAN</button>
+                <button onclick="showMessage('Bantuan'); toggleMobileMenu();">❓ BANTUAN</button>
+            </div>
+        </aside>
+
+        <!-- FOOTER -->
+
+        <footer>
+
+            © 2026 RENDANG GAMING
+
+        </footer>
+
+    </div>
+
+    
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        /* =========================================
+   SCROLL REVEAL
+========================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const gameCards = document.querySelectorAll(".game-card");
+
+    if (!gameCards.length) return;
+
+    gameCards.forEach(card => {
+        card.classList.add("scroll-hidden");
+    });
+
+    const observer = new IntersectionObserver(
+        entries => {
+
+            entries.forEach((entry, index) => {
+
+                if (entry.isIntersecting) {
+
+                    setTimeout(() => {
+                        entry.target.classList.remove("scroll-hidden");
+                        entry.target.classList.add("scroll-show");
+                    }, index * 80);
+
+                    observer.unobserve(entry.target);
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.15
+        }
+    );
+
+    gameCards.forEach(card => {
+        observer.observe(card);
+    });
+
+});
+
+        function openGameDemo(button) {
+    const card = button.closest(".game-card");
+    const title = card.querySelector(".game-info h3");
+
+    const popup = document.getElementById("gameDemoPopup");
+    const gameTitle = document.getElementById("gameDemoTitle");
+
+    if (title) {
+        gameTitle.textContent = title.textContent;
+    }
+
+    popup.classList.add("active");
+    document.body.classList.add("popup-open");
+}
+
+function closeGameDemo() {
+    const popup = document.getElementById("gameDemoPopup");
+
+    popup.classList.remove("active");
+    document.body.classList.remove("popup-open");
+}
+
+        /* ================= CHAT ================= */
+
+        function openChat() {
+
+            document.getElementById("chatBox").style.display = "block";
+
+        }
+
+
+        function closeChat() {
+
+            document.getElementById("chatBox").style.display = "none";
+
+        }
+
+
+        function sendMessage(message) {
+
+            alert("Anda memilih: " + message);
+
+        }
+
+
+        /* =========================================
+   FILTER GAME
+========================================= */
+
+function filterGames(category, button) {
+
+    const games =
+        document.querySelectorAll(".game-card");
+
+    const buttons =
+        document.querySelectorAll(".game-menu");
+
+
+    // Reset tombol
+    buttons.forEach(btn => {
+        btn.classList.remove("active");
+    });
+
+
+    // Aktifkan tombol yang diklik
+    button.classList.add("active");
+
+
+    // Filter game
+    games.forEach(game => {
+
+        const gameCategory =
+            game.getAttribute("data-category");
+
+
+        if (
+            category === "all" ||
+            gameCategory === category
+        ) {
+
+            game.style.display = "block";
+
+        } else {
+
+            game.style.display = "none";
+
+        }
+
+    });
+
+}
+
+function closePromo() {
+
+    const popup =
+        document.getElementById("promoPopup");
+
+    popup.style.opacity = "0";
+
+    setTimeout(() => {
+
+        popup.style.display = "none";
+
+    }, 300);
+
+}
+
+function openPromo() {
+    const popup = document.getElementById("promoPopup");
+    if (popup) {
+        popup.style.display = "flex";
+        popup.style.opacity = "1";
+    }
+}
+
+function openPromoPage() {
+    const promo = document.getElementById("promoPage");
+    const games = document.querySelector(".content-layout");
+    const carousel = document.querySelector(".hero-carousel");
+
+    if (promo) {
+        promo.style.display = "block";
+        promo.style.opacity = "0";
+
+        setTimeout(() => {
+            promo.style.opacity = "1";
+        }, 50);
+    }
+
+    if (games) {
+        games.style.display = "none";
+    }
+
+    if (carousel) {
+        carousel.style.display = "none";
+    }
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+function showGamePage() {
+    const promo = document.getElementById("promoPage");
+    const games = document.querySelector(".content-layout");
+    const carousel = document.querySelector(".hero-carousel");
+
+    if (promo) {
+        promo.style.display = "none";
+    }
+
+    if (games) {
+        games.style.display = "grid";
+    }
+
+    if (carousel) {
+        carousel.style.display = "block";
+    }
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+function showPromoDetail(name) {
+    alert("Anda memilih: " + name);
+}
+
+function goHome() {
+    showGamePage();
+}
+
+function showMessage(name) {
+    alert("Menu " + name + " dipilih.");
+}
+
+function toggleMobileMenu() {
+    const menu = document.getElementById("mobileMenu");
+    const backdrop = document.getElementById("mobileMenuBackdrop");
+
+    if (!menu || !backdrop) return;
+
+    const isOpen = menu.classList.contains("open");
+
+    if (isOpen) {
+        menu.classList.remove("open");
+        backdrop.classList.remove("open");
+        document.body.classList.remove("menu-open");
+    } else {
+        menu.classList.add("open");
+        backdrop.classList.add("open");
+        document.body.classList.add("menu-open");
+    }
+}
+
+
+let currentSlide = 0;
+let slideTimer;
+
+function showSlide(index) {
+    const slides = document.querySelectorAll(".slide");
+    const dots = document.querySelectorAll(".dot");
+
+    if (!slides.length) return;
+
+    if (index >= slides.length) {
+        currentSlide = 0;
+    } else if (index < 0) {
+        currentSlide = slides.length - 1;
+    } else {
+        currentSlide = index;
+    }
+
+    slides.forEach((slide, i) => {
+        slide.classList.toggle("active", i === currentSlide);
+    });
+
+    dots.forEach((dot, i) => {
+        dot.classList.toggle("active", i === currentSlide);
+    });
+
+    resetSlideTimer();
+}
+
+function nextSlide() {
+    showSlide(currentSlide + 1);
+}
+
+function prevSlide() {
+    showSlide(currentSlide - 1);
+}
+
+function resetSlideTimer() {
+    clearInterval(slideTimer);
+
+    slideTimer = setInterval(() => {
+        nextSlide();
+    }, 5000);
+}
+
+// Jalankan pertama kali
+document.addEventListener("DOMContentLoaded", () => {
+    showSlide(0);
+});
+
+
+    </script>
+
+</body>
+
+</html>
